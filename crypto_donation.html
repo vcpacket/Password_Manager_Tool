@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Donation Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .donation-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .qrcode-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .qrcode-container > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px; /* Adjust this value for the desired spacing */
+            overflow: hidden; /* Ensure the background color does not extend beyond the div */
+        }
+
+        .crypto-label {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .crypto-address {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Different colors for captions */
+        .crypto-label-btc, .crypto-label-eth, .crypto-label-ltc {
+            color: #555; /* Adjust color as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="donation-container">
+        <h1>Support Our Cause</h1>
+        <p>Your contributions help us make a difference. Thank you for your support!</p>
+
+        <div class="qrcode-container">
+            <div>
+                <div id="btc"></div>
+                <span class="crypto-label crypto-label-btc">Bitcoin (BTC)</span>
+                <div class="crypto-address">Your Bitcoin Address Here</div>
+            </div>
+            <div>
+                <div id="eth"></div>
+                <span class="crypto-label crypto-label-eth">Ethereum (ETH)</span>
+                <div class="crypto-address">Your Ethereum Address Here</div>
+            </div>
+            <div>
+                <div id="ltc"></div>
+                <span class="crypto-label crypto-label-ltc">Litecoin (LTC)</span>
+                <div class="crypto-address">Your Litecoin Address Here</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate QR code
+        function generateQRCode(address, containerId) {
+            var qrcode = new QRCode(document.getElementById(containerId), {
+                text: address,
+                width: 128,
+                height: 128
+            });
+        }
+
+        // Example: Generate QR codes for different cryptocurrency addresses
+        var cryptoAddresses = {
+            btc: "your_bitcoin_address_here",
+            eth: "your_ethereum_address_here",
+            ltc: "your_litecoin_address_here"
+        };
+
+        for (var key in cryptoAddresses) {
+            generateQRCode(cryptoAddresses[key], key);
+        }
+    </script>
+</body>
+</html>
